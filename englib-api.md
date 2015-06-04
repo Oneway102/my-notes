@@ -5,9 +5,7 @@ API
 
 ## Service API
 
-####  Authentication
-  
-- Register
+- 注册
 
         POST /api/auth/register
       
@@ -24,7 +22,7 @@ API
             "token": "0b4b55e0-0613-11e5-a69d-746573743100"
         }
 
-- Login
+- 登录
 
         POST /api/auth/login
       
@@ -40,7 +38,7 @@ API
             "token": "0b4b55e0-0613-11e5-a69d-746573743100"
         }
 
-- Logout
+- 退出登录
 
         POST /api/auth/logout
       
@@ -48,7 +46,7 @@ API
 
     **Description**
     
-    - TODO
+    - 可能只有 Web 版本需要使用
     - TODO
     
     **Example**
