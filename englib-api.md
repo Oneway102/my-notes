@@ -1,7 +1,7 @@
-API
+Demo API 接口说明
 ====
 
-**Note**: Example data can be tested using the _PostMan_ plugin for Chrome. All requests should carry the param @AppKey.
+**说明**: 所有请求必须携带预先申请的参数 `AppKey`。
 
 ## Service API
 
@@ -19,7 +19,7 @@ API
     Example:
 
         {
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
+            "result": "OK"
         }
 
 - 登录
@@ -28,14 +28,15 @@ API
       
         { "name": "test", "password": "xxxx" }
 
-    **Description**
+    **说明**
     
     - `todo`
 
-    Examples:
+    **应答**
 
         {
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
+            name: "test"
+            token: "0b4b55e0-0613-11e5-a69d-746573743100"
         }
 
 - 退出登录
@@ -47,12 +48,12 @@ API
     **Description**
     
     - 可能只有 Web 版本需要使用
-    - TODO
+    - `TODO`
     
     **Example**
 
         {
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
+            "result": "OK"
         }
 
 - 获取套餐
@@ -68,9 +69,32 @@ API
     
     **Example**
 
-        {
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
-        }
+        [
+          {
+            "id": 10007,
+            "name": "一年级",
+            "description": "",
+            "books": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+            "free_books": "1,2,3,4,5",
+            "subscribed": false
+          },
+          {
+            "id": 10008,
+            "name": "这是二年级套餐",
+            "description": "",
+            "books": "101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132",
+            "free_books": "101,102,103,104,105",
+            "subscribed": true
+          },
+          {
+            "id": 10009,
+            "name": "正式版三年级套餐",
+            "description": "",
+            "books": "201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238",
+            "free_books": "201,202,203,204,205,206,207,208",
+            "subscribed": false
+          }
+        ]
 
 - 创建套餐
 
