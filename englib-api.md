@@ -187,11 +187,13 @@ Demo API 接口说明
     
     **应答**
 
-        {
-            "url": "xxx",
-            "file_id": "GK_U8_DRSB5",
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
-        }
+        HTTP/1.1 302 Moved Temporarily
+        Connection: keep-alive
+        Content-Length: 0
+        Date: Fri, 05 Jun 2015 16:45:27 GMT
+        Location: http://example.com/path/file_name.zip?abc=R0tfVTJfRFJJQjQ0MTQzMzUyNjMyNzgMyN5VTJfRF
+        Set-Cookie: connect.sid=xxx; Path=/; HttpOnly
+        Vary: Accept
 
 
 
@@ -199,9 +201,8 @@ Demo API 接口说明
 
 - 下载
 
-        POST /_download_url_/download
+        GET /_download_url_/xxxx
 
-        { "id": "101", "file_id": "GK_U8_DRSB5", "token": "0b4b55e0-0613-11e5-a69d-746573743100" }
 
     **说明**
     
@@ -210,10 +211,9 @@ Demo API 接口说明
     
     **应答**
 
-        {
-            "url": "xxx",
-            "file_id": "GK_U8_DRSB5",
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
-        }
+        HTTP/1.1 200 OK
+        Connection: keep-alive
+        Content-Length: 1034829
+        Content-Type: application/xxx
 
 - 其它
