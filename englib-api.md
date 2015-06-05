@@ -11,12 +11,12 @@ Demo API 接口说明
       
         { "name": "test", "password": "xxxx" }
 
-    **Description**
+    **说明**
     
     - `name`
     - `password`
     
-    Example:
+    **应答**
 
         {
             "result": "OK"
@@ -45,12 +45,12 @@ Demo API 接口说明
       
         { "name": "test", "password": "xxxx" }
 
-    **Description**
+    **说明**
     
     - 可能只有 Web 版本需要使用
     - `TODO`
     
-    **Example**
+    **应答**
 
         {
             "result": "OK"
@@ -60,14 +60,14 @@ Demo API 接口说明
 
         POST /api/bookset/all
       
-        {  }
+        { "user": "test", "token" :"0b4b55e0-0613-11e5-a69d-746573743100", "token": "0b4b55e0-0613-11e5-a69d-746573743100" }
 
-    **Description**
+    **说明**
     
     - 获取产品的所有可选套餐，其中包括已订阅和未订阅项
-    - 套餐项内包含所有免费得和已推送的书本 **ID** 列表
+    - 套餐项内包含所有免费的和已推送的书本 **ID** 列表
     
-    **Example**
+    **应答**
 
         [
           {
@@ -98,36 +98,36 @@ Demo API 接口说明
 
 - 创建套餐
 
-        POST /api/bookset/all
+        POST /api/bookset/create
       
-        { "name": "bookset_name", "books": "book_id_1,book_id_2,book_id_3", "free": "book_id_1,book_id_2" }
+        { "user": "test", "token" :"0b4b55e0-0613-11e5-a69d-746573743100", "name": "bookset_name", "books": "book_id_1,book_id_2,book_id_3", "free": "book_id_1,book_id_2" }
 
-    **Description**
+    **说明**
     
     - Admin API
     - `free` 是免费书本列表，不论它是否列在 `books` 中，缺省都会将其记做 `books` 的一部分
     
-    Example:
+    **应答**
 
         {
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
+            "bookset_id": "10012"
         }
 
 - 订阅套餐
 
         POST /api/bookset/subscribe
       
-        { "bookset_id": "bookset_id_1", "months": "4" }
+        { "user": "test", "token" :"0b4b55e0-0613-11e5-a69d-746573743100", "bookset_id": "bookset_id_1", "months": "4" }
 
-    **Description**
+    **说明**
     
     - `months` 为订阅时间.
     - 订阅新套餐后，之前订阅的套餐自动截止。
     
-    Examples:
+    **应答**
 
         {
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
+            "result": "OK"
         }
 
 
@@ -138,33 +138,58 @@ Demo API 接口说明
 
         POST /api/book
       
-        { "ids": "book_id_1,book_id_2,book_id_3,book_id_4" }
+        { "ids": "203,204,205" }
 
-    **Description**
+    **说明**
     
-    - 可以以1本到n本为单位来获取.
-    - `ids`
+    - 获取1到n本书的详细信息
+    - 只能获取免费或者本人订阅的套餐中已被推送的书本信息
     
-    Example:
+    **应答**
 
-        {
-            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
-        }
+        [
+          {
+            "ID": 203,
+            "BOOK_TITLE": "Who Can Help?",
+            "FILE_ID": "GK_U8_DRSB3",
+            "GRADE": "0",
+            "BOOK_LEVEL": "S",
+            "URL": "xxx"
+          },
+          {
+            "ID": 204,
+            "BOOK_TITLE": "Zip Zippers! Snap Snaps!",
+            "FILE_ID": "GK_U8_DRSB4",
+            "GRADE": "0",
+            "BOOK_LEVEL": "S",
+            "URL": "xxx"
+          },
+          {
+            "ID": 205,
+            "BOOK_TITLE": "Doing Our Part",
+            "FILE_ID": "GK_U8_DRSB5",
+            "GRADE": "0",
+            "BOOK_LEVEL": "S",
+            "URL": "xxx"
+          }
+        ]
 
 - 下载书本
 
         POST /api/book/download
-      
-        { "book_id": "book_id_1" }
 
-    **Description**
+        { "book_id": "101" }
+
+    **说明**
     
     - 本接口不直接返回下载内容，而是以重定向的方式返回下载URL.
     - `id`
     
-    Example:
+    **应答**
 
         {
+            "url": "xxx",
+            "file_id": "GK_U8_DRSB5",
             "token": "0b4b55e0-0613-11e5-a69d-746573743100"
         }
 
@@ -173,4 +198,22 @@ Demo API 接口说明
 ## Download API
 
 - 下载
-- a
+
+        POST /_download_url_/download
+
+        { "id": "101", "file_id": "GK_U8_DRSB5", "token": "0b4b55e0-0613-11e5-a69d-746573743100" }
+
+    **说明**
+    
+    - 本接口用来下载书本文件，请求的 URL 地址为 Content API 中重定向返回的地址
+    - `token` 
+    
+    **应答**
+
+        {
+            "url": "xxx",
+            "file_id": "GK_U8_DRSB5",
+            "token": "0b4b55e0-0613-11e5-a69d-746573743100"
+        }
+
+- 其它
