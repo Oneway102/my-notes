@@ -30,7 +30,8 @@ Demo API 接口说明
 
     **说明**
     
-    - `todo`
+    - 需要保存应答中的 `token` ，作为后续API调用的凭证。
+    - 当某个API请求遇到 HTTP 401 错误时，说明 `token` 过期，需要重新登录，申请新的 `token`
 
     **应答**
 
@@ -60,12 +61,13 @@ Demo API 接口说明
 
         POST /api/bookset/all
       
-        { "user": "test", "token" :"0b4b55e0-0613-11e5-a69d-746573743100", "token": "0b4b55e0-0613-11e5-a69d-746573743100" }
+        { "user": "test", "token" :"0b4b55e0-0613-11e5-a69d-746573743100" }
 
     **说明**
     
-    - 获取产品的所有可选套餐，其中包括已订阅和未订阅项
-    - 套餐项内包含所有免费的和已推送的书本 **ID** 列表
+    - 获取产品的所有可选套餐，其中包括已订阅和未订阅项，由 `subscribed` 描述
+    - 套餐项内包含所有免费的和已推送（可见）的书本 **ID** 列表
+    - 应答中的 `subscribed` 表示该套餐是否订阅过， `sub_status` 表示已订阅项中的当前订阅状态，最多只有一项为真
     
     **应答**
 
@@ -124,8 +126,8 @@ Demo API 接口说明
 
     **说明**
     
-    - `months` 为订阅时间.
-    - 订阅新套餐后，之前订阅的套餐自动截止。
+    - `months` 为订阅时间（可能改为 `weeks` 更便于计算）
+    - 订阅新套餐后，之前订阅的套餐自动截止，不会再有后续更新
     
     **应答**
 
@@ -156,8 +158,8 @@ Demo API 接口说明
             "BOOK_TITLE": "Who Can Help?",
             "FILE_ID": "GK_U8_DRSB3",
             "GRADE": "0",
-            "BOOK_LEVEL": "S",
-            "URL": "xxx"
+            "BOOK_LEVEL": "S"
+            ...
           },
           {
             "ID": 204,
@@ -165,7 +167,7 @@ Demo API 接口说明
             "FILE_ID": "GK_U8_DRSB4",
             "GRADE": "0",
             "BOOK_LEVEL": "S",
-            "URL": "xxx"
+            ...
           },
           {
             "ID": 205,
@@ -173,7 +175,7 @@ Demo API 接口说明
             "FILE_ID": "GK_U8_DRSB5",
             "GRADE": "0",
             "BOOK_LEVEL": "S",
-            "URL": "xxx"
+            ...
           }
         ]
 
@@ -210,13 +212,13 @@ Demo API 接口说明
     **说明**
     
     - 本接口用来下载书本文件，请求的 URL 地址为 Content API 中重定向返回的地址
-    - `token` 
+    - `todo` 
     
     **应答**
 
         HTTP/1.1 200 OK
-        Connection: keep-alive
+        Connection: keep-aliveå
         Content-Length: 1034829
-        Content-Type: application/xxx
+        Content-Type: application/x-zip-compressed
 
 - 其它
