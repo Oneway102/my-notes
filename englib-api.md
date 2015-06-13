@@ -44,7 +44,7 @@ Demo API 接口说明
 
         POST /api/auth/logout
       
-        { "user": "test", "password": "xxxx" }
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100" }
 
     **说明**
     
