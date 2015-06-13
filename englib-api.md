@@ -9,7 +9,7 @@ Demo API 接口说明
 
         POST /api/auth/register
       
-        { "name": "test", "password": "xxxx" }
+        { "user": "test", "password": "xxxx" }
 
     **说明**
     
@@ -26,7 +26,7 @@ Demo API 接口说明
 
         POST /api/auth/login
       
-        { "name": "test", "password": "xxxx" }
+        { "user": "test", "password": "xxxx" }
 
     **说明**
     
@@ -36,7 +36,7 @@ Demo API 接口说明
     **应答**
 
         {
-            name: "test"
+            user: "test"
             token: "0b4b55e0-0613-11e5-a69d-746573743100"
         }
 
@@ -44,7 +44,7 @@ Demo API 接口说明
 
         POST /api/auth/logout
       
-        { "name": "test", "password": "xxxx" }
+        { "user": "test", "password": "xxxx" }
 
     **说明**
     
