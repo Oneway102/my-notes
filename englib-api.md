@@ -13,7 +13,7 @@ Demo API 接口说明
 
     **说明**
     
-    - `name`
+    - `user`
     - `password`
     
     **应答**
