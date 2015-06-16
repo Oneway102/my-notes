@@ -1,7 +1,7 @@
 Demo API 接口说明
 ====
 
-**说明**: 所有请求必须携带预先申请的参数 `AppKey`。
+**说明**: 所有请求必须携带预先申请的参数 `AppKey` 。
 
 ## Service API
 
@@ -9,12 +9,13 @@ Demo API 接口说明
 
         POST /api/auth/register
       
-        { "user": "test", "password": "xxxx" }
+        { "user": "test", "password": "xxxx", "type": "1", "icode": "zh8Wke1M" }
 
     **说明**
     
     - `user`
     - `password`
+    - 用户类型为老师时，需携带 `icode` 邀请码参数
     
     **应答**
 
@@ -57,6 +58,59 @@ Demo API 接口说明
             "result": "OK"
         }
 
+- 获取用户信息
+
+        POST /api/user
+      
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100" }
+
+    **说明**
+    
+    - 获取 `display_name`
+    - 将来可能会包含用户其它属性
+    
+    **应答**
+
+        {
+            "user": "test", "display_name": "Wang Xiaoming"
+        }
+
+- 更新用户信息
+
+        POST /api/user/upadte
+      
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "display_name": "Wang Ming" }
+
+    **说明**
+    
+    - 修改 `display_name`
+    - 将来可能会包含用户其它属性
+    - 会返回所有可见的用户信息
+    
+    **应答**
+
+        {
+            "user": "test", "display_name": "Wang Xiaoming"
+        }
+
+- 验证邀请码
+
+        POST /api/icode/verify
+      
+        { ... }
+
+    **说明**
+    
+    - 参数只需要发送 `AppKey` 即可
+    - `HTTP 200` 表示有效，其它值表示无效
+
+    **应答**
+
+        { "msg": "Valid" }
+        { "msg": "Invalid" }
+
+- 生成邀请码
+        `TODO`
 - 获取套餐
 
         POST /api/bookset/all
