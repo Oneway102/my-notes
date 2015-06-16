@@ -97,11 +97,11 @@ Demo API 接口说明
 
         POST /api/icode/verify
       
-        { ... }
+        { "icode": "R6InSgyh" }
 
     **说明**
     
-    - 参数只需要发送 `AppKey` 即可
+    - 邀请码验证之后才允许注册
     - `HTTP 200` 表示有效，其它值表示无效
 
     **应答**
