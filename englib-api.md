@@ -132,6 +132,7 @@ Demo API 接口说明
             "description": "",
             "books": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
             "free_books": "1,2,3,4,5",
+            "total": 61,
             "subscribed": false,
             "sub_status": false
           },
@@ -141,6 +142,7 @@ Demo API 接口说明
             "description": "",
             "books": "101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132",
             "free_books": "101,102,103,104,105",
+            "total": 60,
             "subscribed": true
             "sub_status": true
           },
@@ -150,6 +152,7 @@ Demo API 接口说明
             "description": "",
             "books": "201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238",
             "free_books": "201,202,203,204,205,206,207,208",
+            "total": 58,
             "subscribed": true
             "sub_status": false
           }
@@ -210,6 +213,7 @@ Demo API 接口说明
           {
             "ID": 203,
             "BOOK_TITLE": "Who Can Help?",
+            "BOOK_TITLE_CN": "谁能帮助我",
             "FILE_ID": "GK_U8_DRSB3",
             "GRADE": "0",
             "BOOK_LEVEL": "S"
@@ -218,6 +222,7 @@ Demo API 接口说明
           {
             "ID": 204,
             "BOOK_TITLE": "Zip Zippers! Snap Snaps!",
+            "BOOK_TITLE_CN": "拉拉链！按扣子！",
             "FILE_ID": "GK_U8_DRSB4",
             "GRADE": "0",
             "BOOK_LEVEL": "S",
@@ -226,6 +231,7 @@ Demo API 接口说明
           {
             "ID": 205,
             "BOOK_TITLE": "Doing Our Part",
+            "BOOK_TITLE_CN": "各做各事",
             "FILE_ID": "GK_U8_DRSB5",
             "GRADE": "0",
             "BOOK_LEVEL": "S",
