@@ -9,13 +9,13 @@ Demo API 接口说明
 
         POST /api/auth/register
       
-        { "user": "test", "password": "xxxx", "type": "1", "icode": "zh8Wke1M" }
+        { "user": "test", "password": "xxxx", "type": "1", "sms_code": "zh8Wke1M", "code_id": 2192 }
 
     **说明**
     
-    - `user`
-    - `password`
-    - 用户类型为老师时，需携带 `icode` 邀请码参数
+    - `type` : 1 - 学生； 10 - 老师
+    - `sms_code` `code_id`  分别为请求短信验证码时服务器返回的值（参考 **获取验证码** 接口）
+    - ~~用户类型为老师时，需携带 `icode` 邀请码参数~~
     
     **应答**
 
@@ -56,6 +56,25 @@ Demo API 接口说明
 
         {
             "result": "OK"
+        }
+
+- 获取短信验证码
+
+        POST /api/auth/smscode
+      
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "phone": "13828473948", "service_type": 1 }
+
+    **说明**
+    
+    - `service_type` 表示验证码用途。 1 - 注册；2 - 修改密码；3 - 忘记密码
+    - 注册时无需提供 `user` 和 `token` 参数，其它已确定用户名的情况则需要提供该参数
+    - 客户端应提供保护机制，避免用户短时间内重复获取短信验证码
+    - 返回的结果包含 `code_id` , 在校验短信验证码（例如提交注册信息）时，需要同时提供该参数
+    
+    **应答**
+
+        {
+            "code_id": 213
         }
 
 - 获取用户信息
