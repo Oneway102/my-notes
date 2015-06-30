@@ -211,7 +211,137 @@ Demo API 接口说明
             "result": "OK"
         }
 
+- 获取老师信息
 
+        POST /api/teacher
+      
+        { "user": "test", "teacher": "tj859583" }
+
+    **说明**
+    
+    - 可以作为学生查找老师、绑定老师用
+    -  `teacher` 为老师注册ID，非后台数据库ID
+    - 应答中的 `bookset_id` 对应年级（即业务逻辑中得套餐ID）
+
+    **应答**
+
+        {
+            "id": 69
+            "name": "tj859583"
+            "display_name": "Mike"
+        }
+
+- 绑定一位老师
+
+        POST /api/teacher/assign
+      
+        { "user": "13828374485", "teacher": "tj859583" }
+
+    **说明**
+    
+    - 可以作为学生查找老师、绑定老师用
+    -  `teacher` 为老师注册ID，非后台数据库ID
+
+    **应答**
+
+        { result: "OK" }
+
+- 获取班级信息
+
+        POST /api/class
+      
+        { "user": "tj859583", "class_id": 518 }
+
+    **说明**
+    
+    - 只有老师有权限调用该接口， `user` 对应调用者ID
+    - 应答中的 `created_by` 为该班级的老师（创建者）
+    - 应答中的 `bookset_id` 对应年级（即业务逻辑中得套餐ID）
+
+    **应答**
+
+        {
+            "id": 1
+            "name": "className"
+            "bookset_id": 2
+            "created_by": 12
+        }
+
+- 获取班级学生列表
+
+        POST /api/class/member
+      
+        { "user": "tj859583", "class_id": 518 }
+
+    **说明**
+    
+    - 只有老师有权限调用该接口， `user` 对应调用者ID
+    - 应答中的 `created_by` 为该班级的老师（创建者）
+    - 应答中的 `bookset_id` 对应年级（即业务逻辑中得套餐ID）
+
+    **应答**
+
+        {
+            class: {
+                id: 1,
+                name: "className",
+                bookset_id: 2,
+                created_by: 12
+            }
+            members: [
+                { id: 4, name: "13911257724", display_name: "jackww"
+                },
+                { id: 5, name: "13912345892", display_name: "tom"
+                }
+            ]
+        }
+
+- 创建班级
+
+        POST /api/class/create
+      
+        { "user": "tj859583", "name": "三年一班", "bookset_id": 3 }
+
+    **说明**
+    
+    - 只有老师有权限调用该接口， `user` 对应调用者ID
+    -  `bookset_id` 对应年级（即业务逻辑中得套餐ID）
+
+    **应答**
+
+        { "result": "OK" }
+
+- 加入班级
+
+        POST /api/class/join
+      
+        { "user": "tj859583", "class_id": 518, "user_ids": "35, 44, 103" }
+
+    **说明**
+    
+    - 将一个或多个 user （即学生）加入一个班级
+    - 只有老师有权限调用该接口， `user` 对应调用者ID
+    - 应答中的 `created_by` 为该班级的老师（创建者）
+    - 应答中的 `bookset_id` 对应年级（即业务逻辑中得套餐ID）
+
+    **应答**
+
+        { "result": "OK" }
+
+- 退出班级
+
+        POST /api/class/quit
+      
+        { "user": "tj859583", "class_id": 518, "user_ids": "35, 44, 103" }
+
+    **说明**
+    
+    - 将一个或多个 user （即学生）退出一个班级
+    - 只有老师有权限调用该接口， `user` 对应调用者ID
+
+    **应答**
+
+        { "result": "OK" }
 
 ## Content API
 
