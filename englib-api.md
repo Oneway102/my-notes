@@ -3,6 +3,7 @@ Demo API 接口说明
 
 **说明**: 所有请求必须携带预先申请的参数 `AppKey` 。
 
+
 ## Service API
 
 - 注册
@@ -294,6 +295,25 @@ Demo API 接口说明
                 { id: 5, name: "13912345892", display_name: "tom"
                 }
             ]
+        }
+
+- 获取绑定老师的学生信息
+
+        POST /api/teacher/student
+      
+        { "user": "bj483726" }
+
+    **说明**
+    
+    - 只有老师可以调用该接口
+    - 返回所有学生信息
+
+    **应答**
+
+        {
+            "id": 69
+            "name": "tj859583"
+            "students": [ {...}, {...} ]
         }
 
 - 创建班级
