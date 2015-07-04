@@ -306,14 +306,39 @@ Demo API 接口说明
     **说明**
     
     - 只有老师可以调用该接口
-    - 返回所有学生信息
+    - 返回所有学生信息， 其中 `class_id` 为 0 表示没有加入任何班级
 
     **应答**
 
         {
             "id": 69
             "name": "tj859583"
-            "students": [ {...}, {...} ]
+            "students": [
+                { id: 212, name: "...", display_name: "...", class_id: 8 },
+                { id: 219, name: "...", display_name: "...", class_id: 0 }
+            ]
+        }
+
+- 获取班级列表
+
+        POST /api/teacher/class
+      
+        { "user": "tj859583" }
+
+    **说明**
+    
+    - 只有老师有权限调用该接口， `user` 对应调用者ID
+    -  todo
+
+    **应答**
+
+        {
+            id: 12,
+            name: "js962981",
+            classes: [
+                { id: 1, name: "className", bookset_id: 2 },
+                { id: 2, name: "className2", bookset_id: 3 },
+            ]
         }
 
 - 创建班级
@@ -326,6 +351,23 @@ Demo API 接口说明
     
     - 只有老师有权限调用该接口， `user` 对应调用者ID
     -  `bookset_id` 对应年级（即业务逻辑中得套餐ID）
+
+    **应答**
+
+        { "result": "OK" }
+
+- 加入班级
+
+        POST /api/class/join
+      
+        { "user": "tj859583", "class_id": 518, "user_ids": "35, 44, 103" }
+
+    **说明**
+    
+    - 将一个或多个 user （即学生）加入一个班级
+    - 只有老师有权限调用该接口， `user` 对应调用者ID
+    - 应答中的 `created_by` 为该班级的老师（创建者）
+    - 应答中的 `bookset_id` 对应年级（即业务逻辑中得套餐ID）
 
     **应答**
 
