@@ -97,7 +97,7 @@ Demo API 接口说明
 
 - 更新用户信息
 
-        POST /api/user/upadte
+        POST /api/user/update
       
         { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "display_name": "Wang Ming" }
 
