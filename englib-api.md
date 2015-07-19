@@ -87,12 +87,23 @@ Demo API 接口说明
     **说明**
     
     - 获取 `display_name`
-    - 将来可能会包含用户其它属性
+    - 将来可能会包含用户其它属性：老师、班级属性
     
     **应答**
 
         {
-            "user": "test", "display_name": "Wang Xiaoming"
+            id: 4,
+            name: "13912257904",
+            display_name: "xiaoming",
+            teacher: {
+                id: 12,
+                name: "js962981",
+                display_name: "abc"
+            },
+            class: {
+                id: 1,
+                name: "className"
+            }
         }
 
 - 更新用户信息
@@ -235,13 +246,29 @@ Demo API 接口说明
 - 绑定一位老师
 
         POST /api/teacher/assign
+        POST /api/teacher/associate
       
         { "user": "13828374485", "teacher": "tj859583" }
 
     **说明**
     
-    - 可以作为学生查找老师、绑定老师用
+    - 可以作为学生查找老师、绑定老师用（两个接口功能相同）
     -  `teacher` 为老师注册ID，非后台数据库ID
+
+    **应答**
+
+        { result: "OK" }
+
+- 绑定一位教导员
+
+        POST /api/director/associate
+      
+        { "user": "tjs859583", "director": "tjsd59583" }
+
+    **说明**
+    
+    - 可以作为老师绑定教导员用，只有老师有权限调用该接口
+    -  `director` 为教导员注册ID，非后台数据库ID
 
     **应答**
 
