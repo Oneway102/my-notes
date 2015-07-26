@@ -463,6 +463,43 @@ Demo API 接口说明
 
         { "result": "OK" }
 
+- 获取测试
+
+        POST /api/exam
+      
+        { "user": "tj859583", "book_id": 518}
+
+    **说明**
+    
+    - 获取一个测试或作业的信息
+    - `book_id` 为对应的书本ID
+    - 可通过应答中的 `url` 去下载该测试/作业
+
+    **应答**
+
+        {
+            id: 1
+            name: "gk_u2_drib1"
+            book_id: 1
+            file_id: "GK_U2_DRIB1"
+            url: "http:/exampl.com/testStorage/gk_u2_drib1.zip?t=xxx"
+        }
+
+- 提交成绩
+
+        POST /api/exam/score/submit
+      
+        { "user": "tj859583", "book_id": 518, "test_id": "2", "type": "1" }
+
+    **说明**
+    
+    - 学生用户提交测试/作业的成绩
+    - `type` 表示： 1-测试；2-作业
+
+    **应答**
+
+        { "result": "OK" }
+
 ## Content API
 
 - 获取书本列表
