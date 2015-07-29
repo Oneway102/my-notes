@@ -463,7 +463,22 @@ Demo API 接口说明
 
         { "result": "OK" }
 
-- 获取测试
+- 布置作业
+
+        POST /api/task/assign
+      
+        { "user": "tjs59583", "book_id": 518, "class_id": "2", "bookset_id": "5" }
+
+    **说明**
+    
+    - 老师布置作业
+    - 需要提供有效的 `bookset_id`，`book_id`， `class_id`，并且确保套餐和书本对应，老师和班级对应 
+
+    **应答**
+
+        { "result": "OK" }
+
+- 获取一个测试
 
         POST /api/exam
       
@@ -473,6 +488,7 @@ Demo API 接口说明
     
     - 获取一个测试或作业的信息
     - `book_id` 为对应的书本ID
+    - 应答中的 `file_id` 对应书本名
     - 可通过应答中的 `url` 去下载该测试/作业
 
     **应答**
@@ -499,6 +515,51 @@ Demo API 接口说明
     **应答**
 
         { "result": "OK" }
+
+- 获取成绩列表
+
+        POST /api/exam/score/list
+      
+        { "user": "sjk000103", "book_id": 518, "class_id": "2" }
+
+    **说明**
+    
+    - 根据一本书，获取一个班的学生分数
+    - 仅老师有权限调用该接口
+    - 注意一本书对应的既可以是测试，也可以是作业成绩，以实际情况为准
+    - 未提交作业的学生成绩部分数据为空
+
+    **应答**
+
+        {
+          "teacher": "sjk000103",
+          "class_id": "3",
+          "scores": [
+            {
+              "name": "13924758473",
+              "display_name": "",
+              "user_id": 6,
+              "test_id": 1,
+              "type": 1,
+              "score": 70,
+              "created_time": 1437926759
+            },
+            {
+              "name": "13694938574",
+              "display_name": "",
+              "user_id": 8,
+              "test_id": 1,
+              "type": 1,
+              "score": 90,
+              "created_time": 1437929759
+            },
+            {
+              "name": "13923405966",
+              "display_name": ""
+            }
+          ]
+        }
+
 
 ## Content API
 
