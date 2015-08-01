@@ -515,6 +515,31 @@ Demo API 接口说明
 
         { "result": "OK" }
 
+- 获取作业列表
+
+        POST /api/task/list
+      
+        { "user": "tjs59583", "class_id": 18, "bookset_id": "5" }
+
+    **说明**
+    
+    - 根据班级获取作业列表
+    - 需要提供有效的 `bookset_id`， `class_id`，并且确保套餐和老师、班级对应 
+    - 返回的 `assigned_books` 即作业对应的书本ID，通过这些ID可以进一步查询/获取与作业相关的学生完成情况，例如分数等
+
+    **应答**
+
+        {
+              "teacher": "tjs59583",
+              "class_id": "18",
+              "bookset_id": "5",
+              "assigned_books": [
+                "130“,
+                "136”,
+                "137"
+              ]
+        }
+
 - 获取一个测试
 
         POST /api/exam
