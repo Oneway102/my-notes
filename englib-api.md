@@ -67,7 +67,7 @@ Demo API 接口说明
 
     **说明**
     
-    - `service_type` 表示验证码用途。 1 - 注册；2 - 修改密码；3 - 忘记密码
+    - `service_type` 表示验证码用途。 1 - 注册；2 - 修改密码；3 - 忘记密码；4 - 绑定手机
     - 注册时无需提供 `user` 和 `token` 参数，其它已确定用户名的情况则需要提供该参数
     - 客户端应提供保护机制，避免用户短时间内重复获取短信验证码
     - 返回的结果包含 `code_id` , 在校验短信验证码（例如提交注册信息）时，需要同时提供该参数
@@ -198,6 +198,7 @@ Demo API 接口说明
             "description": "",
             "books": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
             "free_books": "1,2,3,4,5",
+            "assigned_books": "2,8",
             "total": 61,
             "subscribed": false,
             "sub_status": false
@@ -208,6 +209,7 @@ Demo API 接口说明
             "description": "",
             "books": "101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132",
             "free_books": "101,102,103,104,105",
+            "assigned_books": "102,108",
             "total": 60,
             "subscribed": true
             "sub_status": true
@@ -684,4 +686,3 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
-
