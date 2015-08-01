@@ -88,6 +88,7 @@ Demo API 接口说明
     
     - 获取 `display_name`
     - 将来可能会包含用户其它属性：老师、班级属性
+    - 不同类型用户返回的附加信息结构不同
     
     **应答**
 
@@ -95,6 +96,8 @@ Demo API 接口说明
             id: 4,
             name: "13912257904",
             display_name: "xiaoming",
+            type: 10,
+            phone: 13938373737,
             teacher: {
                 id: 12,
                 name: "js962981",
@@ -105,6 +108,21 @@ Demo API 接口说明
                 name: "className"
             }
         }
+        或
+        {
+          id: 32,
+          name: "sjk0000103",
+          type: 10,
+          phone: 13938373737,
+          display_name: "",
+          director: {
+            id: 27,
+            name: "sjkd000104",
+            type: 20,
+            phone: 12929293747,
+            display_name: "asdsf"
+          }
+        }
 
 - 更新用户信息
 
@@ -114,7 +132,7 @@ Demo API 接口说明
 
     **说明**
     
-    - 修改 `display_name`
+    - 修改 `display_name` 等除了电话号码/电子邮件之外的信息
     - 将来可能会包含用户其它属性
     - 会返回所有可见的用户信息
     
@@ -122,6 +140,23 @@ Demo API 接口说明
 
         {
             "user": "test", "display_name": "Wang Xiaoming"
+        }
+
+- 绑定手机
+
+        POST /api/user/phone/update
+      
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "phone": "13023456789" }
+
+    **说明**
+    
+    - 修改 电话号码
+    - 用户将来收到手机短信验证码，验证通过才表示修改成功
+
+    **应答**
+
+        {
+            result: "OK"
         }
 
 - 验证邀请码
@@ -649,3 +684,4 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
