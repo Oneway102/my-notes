@@ -128,13 +128,13 @@ Demo API 接口说明
 
         POST /api/user/update
       
-        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "display_name": "Wang Ming" }
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "display_name": "Wang Ming", 'gender": "1" }
 
     **说明**
     
     - 修改 `display_name` 等除了电话号码/电子邮件之外的信息
-    - 将来可能会包含用户其它属性
-    - 会返回所有可见的用户信息
+    - `gender` 性别， 1-男，2-女
+    - 会返回所有可见的基本用户信息
     
     **应答**
 
@@ -563,6 +563,62 @@ Demo API 接口说明
             url: "http:/exampl.com/testStorage/gk_u2_drib1.zip?t=xxx"
         }
 
+- 根据班级获取作业列表
+
+        POST /api/exam/class/list
+        POST /api/task/class/list
+      
+        { "user": "tj859583", "class_id": 518, "bookset_id": 34}
+
+    **说明**
+    
+    - 获取一个班的作业列表
+    - `bookset_id` 为班级对应的套餐ID，冗余参数，仅作为参数校验用
+    - 应答中的 `book_title` 对应书本题目
+    - `TODO` 是否还需要书本ID以及下载URL ?
+
+    **应答**
+
+        {
+            "user": "tj859583",
+            "class_id": 518,
+            "bookset_id": 34,
+            "assigned_books": [
+            {
+              "book_id": 114,
+              "class_id": 3,
+              "book_title": "Family Time",
+              "created_time": 1438960309,
+              "exam_id": 2
+            },
+            {
+              "book_id": 130,
+              "class_id": 3,
+              "book_title": "Hide and Seek!",
+              "created_time": 1439015871,
+              "exam_id": 3
+            }
+            ]
+        }
+
+- 学生获取作业列表
+
+        POST /api/exam/student/list
+        POST /api/task/student/list
+      
+        { "user": "tj859583", "class_id": 518, "bookset_id": 34}
+
+    **说明**
+    
+    - 获取一个学生的作业列表（只能获取当前班级的作业列表）
+    - `bookset_id` 为班级对应的套餐ID，冗余参数，仅作为参数校验用
+    - 应答中的 `file_id` 对应书本名
+
+    **应答**
+
+        {
+        }
+
 - 提交成绩
 
         POST /api/exam/score/submit
@@ -621,7 +677,109 @@ Demo API 接口说明
             }
           ]
         }
+- 根据套餐获取成绩列表
 
+        POST /api/exam/score/user/list
+      
+        { "user": "13924758473", "book_id": 2 }
+
+    **说明**
+    
+    - 根据一本书，获取一个学生的测试/作业分数
+    - 注意一本书对应的既可以是测试，也可以是作业成绩，以 `type` 标识为准， 1-测试，2-作业。其中测试成绩一般不带有班级和作业ID等信息
+    - 未提交的成绩不会列出
+    - `score` 成绩类型为字符串，可能是 *0-100* 或者 *A/B/C/D* 的形式
+
+    **应答**
+
+        {
+            "user": "13924758473",
+            "bookset_id": 2,
+            "scores": [
+                {
+                    "user_id": 6,
+                    "class_id": 3,
+                    "book_id": 114,
+                    "exam_id": 2,
+                    "type": 2,
+                    "score": "B",
+                    "created_time": 1438961086,
+                    "modified_time": 1438962280,
+                    "book_title": "Family Time"
+                },
+                {
+                    "user_id": 6,
+                    "class_id": null,
+                    "book_id": 104,
+                    "exam_id": null,
+                    "type": 1,
+                    "score": "d",
+                    "created_time": 1438962369,
+                    "modified_time": 1438962596,
+                    "book_title": "I Am Like an Eagle"
+                },
+                {
+                    "user_id": 6,
+                    "class_id": 0,
+                    "book_id": 105,
+                    "exam_id": 0,
+                    "type": 1,
+                    "score": "d",
+                    "created_time": 1438962608,
+                    "modified_time": 1438962608,
+                    "book_title": "Jed Learns to Tie His Shoes"
+                }
+            ]
+        }
+
+- 根据班级获取成绩列表
+
+        POST /api/exam/score/class/list
+      
+        { "user": "sjk000103", "class_id": 5 }
+
+    **说明**
+    
+    - 获取一个班级中的学生的测试/作业分数
+    - 注意一本书对应的既可以是测试，也可以是作业成绩，以 `type` 标识为准， 1-测试，2-作业。其中测试成绩一般不带有班级和作业ID等信息
+    - 未提交的成绩不会列出
+    - `score` 成绩类型为字符串，可能是 *0-100* 或者 *A/B/C/D* 的形式
+
+    **应答**
+
+        {
+            "user": "sjk0000103",
+            "class_id": "3",
+            "scores": [
+                {
+                  "user_id": 6,
+                  "name": "13924758473",
+                  "display_name": "",
+                  "book_id": 114,
+                  "exam_id": 2,
+                  "type": 2,
+                  "score": "B",
+                  "assigned_time": 1438961086,
+                  "submit_time": 1438962280
+                },
+                {
+                  "user_id": 8,
+                  "name": "13694938574",
+                  "display_name": "",
+                  "book_id": 114,
+                  "exam_id": 2,
+                  "type": 2,
+                  "score": "B",
+                  "assigned_time": 1439005980,
+                  "submit_time": 1439005980
+                },
+                {
+                  "user_id": 9,
+                  "name": "13923405966",
+                  "display_name": ""
+                }
+            ]
+        }
 
 ## Content API
 
@@ -711,3 +869,4 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
