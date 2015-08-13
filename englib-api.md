@@ -606,17 +606,79 @@ Demo API 接口说明
         POST /api/exam/student/list
         POST /api/task/student/list
       
-        { "user": "tj859583", "class_id": 518, "bookset_id": 34}
+        { "user": "tj859583", "from":1439389461998, "count": 20 }
 
     **说明**
     
-    - 获取一个学生的作业列表（只能获取当前班级的作业列表）
-    - `bookset_id` 为班级对应的套餐ID，冗余参数，仅作为参数校验用
-    - 应答中的 `file_id` 对应书本名
+    - 获取一个学生的作业列表，结果以 `modified_time` 逆序排列
+    - 可选参数： `from` 为列表记录开始的时间；`count` 为每次列表数目
+    - 应答中的 `created_time` 为作业创建时间， `modified_time` 为最新成绩提交时间
+    - 班级/群组的 ID 为0时表示这是系统发布的作业，对应的老师为系统老师
 
     **应答**
 
         {
+          "id": 6,
+          "student": "13924758473",
+          "exams": [
+            {
+              "exam_id": 104,
+              "teacher": {
+                "id": 0,
+                "name": "乐迪老师",
+                "display_name": "乐迪老师"
+              },
+              "class": {
+                "id": 0,
+                "name": null
+              },
+              "book": {
+                "id": 104,
+                "book_title": "I Am Like an Eagle"
+              },
+              "score": null,
+              "created_time": 1439389461998,
+              "modified_time": 1439389461998
+            },
+            {
+              "exam_id": 930,
+              "teacher": {
+                "id": 32,
+                "name": "sjk0000103",
+                "display_name": "乐迪老师"
+              },
+              "class": {
+                "id": 5,
+                "name": "快进班"
+              },
+              "book": {
+                "id": 425,
+                "book_title": "We All Work"
+              },
+              "score": null,
+              "created_time": 1439389428071,
+              "modified_time": 1439389428071
+            },
+            {
+              "exam_id": 929,
+              "teacher": {
+                "id": 32,
+                "name": "sjk0000103",
+                "display_name": "乐迪老师"
+              },
+              "class": {
+                "id": 5,
+                "name": "快进班"
+              },
+              "book": {
+                "id": 423,
+                "book_title": "A.J.’s New Neighbor"
+              },
+              "score": null,
+              "created_time": 1439389412989,
+              "modified_time": 1439389412989
+            }
+          ]
         }
 
 - 提交成绩
@@ -634,47 +696,57 @@ Demo API 接口说明
 
         { "result": "OK" }
 
-- 获取成绩列表
+- 获取老师布置的作业列表
 
-        POST /api/exam/score/list
+        POST /api/exam/teacher/list
       
-        { "user": "sjk000103", "book_id": 518, "class_id": "2" }
+        { "user": "sjk000103", "from": 518, "count": "20" }
 
     **说明**
     
-    - 根据一本书，获取一个班的学生分数
+    - 获取一位老师布置的作业列表，结果以 `created_time` 逆序排列
+    - 可选参数： `from` 为列表记录开始的时间；`count` 为每次列表数目
+    - 应答中的 `created_time` 为作业创建时间
     - 仅老师有权限调用该接口
-    - 注意一本书对应的既可以是测试，也可以是作业成绩，以实际情况为准
-    - 未提交作业的学生成绩部分数据为空
 
     **应答**
 
         {
-          "teacher": "sjk000103",
-          "class_id": "3",
-          "scores": [
+          "id": 32,
+          "teacher": "sjk0000103",
+          "exams": [
             {
-              "name": "13924758473",
-              "display_name": "",
-              "user_id": 6,
-              "test_id": 1,
-              "type": 1,
-              "score": 70,
-              "created_time": 1437926759
+              "exam_id": 931,
+              "class": {
+                "id": 3,
+                "name": "grade2"
+              },
+              "book": {
+                "id": 104,
+                "book_title": "I Am Like an Eagle"
+              },
+              "stat": {
+                "total": 1,
+                "submitted": 0
+              },
+              "created_time": 1439389461990
             },
             {
-              "name": "13694938574",
-              "display_name": "",
-              "user_id": 8,
-              "test_id": 1,
-              "type": 1,
-              "score": 90,
-              "created_time": 1437929759
+              "exam_id": 930,
+              "class": {
+                "id": 5,
+                "name": "快进班"
+              },
+              "book": {
+                "id": 425,
+                "book_title": "We All Work"
+              },
+              "stat": {
+                "total": 2,
+                "submitted": 0
+              },
+              "created_time": 1439389427978
             },
-            {
-              "name": "13923405966",
-              "display_name": ""
-            }
           ]
         }
 - 根据套餐获取成绩列表
@@ -730,6 +802,48 @@ Demo API 接口说明
                     "book_title": "Jed Learns to Tie His Shoes"
                 }
             ]
+        }
+
+- 根据某个测试获取学生成绩列表
+
+        POST /api/exam/score/book/list
+      
+        { "user": "sjk000103", "exam_id": 5 }
+
+    **说明**
+    
+    - 老师获取某个作业/书本的所有学生的测试分数
+    - 因为书本ID不能唯一确定一个作业，因此以 `exam_id` 作为输入参数
+    - 未提交的成绩为 null
+    - 结果以 `modified_time` 即学生提交作业的时间为逆序排列
+    - `score` 成绩类型为字符串，可能是 *0-100* 或者 *A/B/C/D* 的形式
+
+    **应答**
+    
+        {
+          "id": 32,
+          "teacher": "sjk0000103",
+          "exam_id": 929,
+          "students": [
+            {
+              "user_id": 6,
+              "book_id": 423,
+              "score": "A",
+              "created_time": 1439389412989,
+              "modified_time": 1439389461999,
+              "name": "13924758473",
+              "display_name": ""
+            },
+            {
+              "user_id": 8,
+              "book_id": 423,
+              "score": null,
+              "created_time": 1439389412991,
+              "modified_time": 1439389412991,
+              "name": "13694938574",
+              "display_name": ""
+            }
+          ]
         }
 
 - 根据班级获取成绩列表
@@ -869,4 +983,3 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
-
