@@ -451,6 +451,21 @@ Demo API 接口说明
 
         { "result": "OK" }
 
+- 注销或删除班级
+
+        POST /api/class/delete
+      
+        { "user": "tj859583", "class_id": 3 }
+
+    **说明**
+    
+    - 只有老师有权限调用该接口
+    - 班级中的所有学生将会自动退出
+
+    **应答**
+
+        { "result": "OK" }
+
 - 加入班级
 
         POST /api/class/join
@@ -685,7 +700,7 @@ Demo API 接口说明
 
         POST /api/exam/score/submit
       
-        { "user": "tj859583", "book_id": 518, "test_id": "2", "type": "1" }
+        { "user": "tj859583", "book_id": 518, "exam_id": "2", "type": "1" }
 
     **说明**
     
@@ -806,7 +821,7 @@ Demo API 接口说明
 
 - 根据某个测试获取学生成绩列表
 
-        POST /api/exam/score/book/list
+        POST /api/exam/score/list
       
         { "user": "sjk000103", "exam_id": 5 }
 
