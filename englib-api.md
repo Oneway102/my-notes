@@ -296,6 +296,36 @@ Demo API 接口说明
 
         { result: "OK" }
 
+- 学生解除绑定老师
+
+        POST /api/teacher/unassociate
+      
+        { "user": "13828374485" }
+
+    **说明**
+    
+    - 不需要老师参数
+    - 会同时退出相关班级/群组
+
+    **应答**
+
+        { result: "OK" }
+
+- 老师解除绑定一位学生
+
+        POST /api/teacher/s/unassociate
+      
+        { "user": "tjs000102", "student_id": "13022334455" }
+
+    **说明**
+    
+    - 注意不要和学生解除绑定的接口混淆
+    - 学生会同时退出相关班级/群组
+
+    **应答**
+
+        { result: "OK" }
+
 - 绑定一位教导员
 
         POST /api/director/associate
