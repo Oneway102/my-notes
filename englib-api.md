@@ -1006,7 +1006,35 @@ Demo API 接口说明
         Set-Cookie: connect.sid=xxx; Path=/; HttpOnly
         Vary: Accept
 
+- 上报书本阅读进度
 
+        POST /api/stat/book/progress/update
+
+        { "user": "13022334455", "book_id": "205", "progress": "80" }
+
+    **说明**
+    
+    - 学生上报一本书的阅读进度.
+    - `progress` 为 0-100 之间的数字。（可能需要再讨论重复上报的非法进度，目前暂不考虑）
+    
+    **应答**
+
+        { "result": "OK" }
+
+- 获取书本统计信息
+
+        POST /api/stat/book
+
+        { "user": "13022334455", "book_id": "205" }
+
+    **说明**
+    
+    - 包括阅读进度等信息，返回的统计数据会根据需要逐渐增加.
+    - `progress` 为 0-100 之间的数字。（可能需要再讨论重复上报的非法进度，目前暂不考虑）
+    
+    **应答**
+
+        { user: "13022334455", book_id: 205, book_title: 'xxxxx', progress: 85, ... }
 
 ## Download API
 
