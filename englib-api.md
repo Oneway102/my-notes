@@ -16,6 +16,7 @@ Demo API 接口说明
     
     - `type` : 1 - 学生； 10 - 老师 （目前暂时可忽略）
     - `sms_code` `code_id`  分别为请求短信验证码时服务器返回的值（参考 **获取验证码** 接口）
+    - 目前只有学生用户需要注册
     - ~~用户类型为老师时，需携带 `icode` 邀请码参数~~
     
     **应答**
@@ -134,6 +135,7 @@ Demo API 接口说明
     
     - 修改 `display_name` 等除了电话号码/电子邮件之外的信息
     - `gender` 性别， 1-男，2-女
+    - `display_name` `gender` 等参数至少有一个即可，多值可选
     - 会返回所有可见的基本用户信息
     
     **应答**
@@ -560,7 +562,7 @@ Demo API 接口说明
 
         { "result": "OK" }
 
-- 获取作业列表
+- ~~获取作业列表~~
 
         POST /api/task/list
       
@@ -585,7 +587,7 @@ Demo API 接口说明
               ]
         }
 
-- 获取一个测试
+- ~~获取一个测试~~
 
         POST /api/exam
       
@@ -608,7 +610,7 @@ Demo API 接口说明
             url: "http:/exampl.com/testStorage/gk_u2_drib1.zip?t=xxx"
         }
 
-- 根据班级获取作业列表
+- ~~根据班级获取作业列表~~
 
         POST /api/exam/class/list
         POST /api/task/class/list
@@ -741,7 +743,7 @@ Demo API 接口说明
 
         { "result": "OK" }
 
-- 获取老师布置的作业列表
+- 老师获取自己布置的作业列表
 
         POST /api/exam/teacher/list
       
@@ -1056,3 +1058,4 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
