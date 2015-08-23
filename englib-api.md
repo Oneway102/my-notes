@@ -179,6 +179,21 @@ Demo API 接口说明
 
 - 生成邀请码
         `TODO`
+
+- 获取用户当前订阅的套餐
+
+        POST /api/bookset/mine
+      
+        { "user": "test", "token" :"0b4b55e0-0613-11e5-a69d-746573743100" }
+
+    **说明**
+    
+    - 获取用户当前订阅的套餐
+    - 返回结果只包含套餐ID和名称，具体的套餐书本信息可以通过获取下一个接口获取
+
+    **应答**
+        { user: "test", bookset_id: 5, name: "5年级" }
+
 - 获取套餐
 
         POST /api/bookset/all
@@ -1058,4 +1073,6 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
+
 
