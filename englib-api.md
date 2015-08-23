@@ -747,12 +747,13 @@ Demo API 接口说明
 
         POST /api/exam/score/submit
       
-        { "user": "tj859583", "book_id": 518, "exam_id": "2", "type": "1" }
+        { "user": "tj859583", "book_id": 518, "exam_id": "2", "question_stat": "....." }
 
     **说明**
     
     - 学生用户提交测试/作业的成绩
-    - `type` 表示： 1-测试；2-作业
+    - `question_stat` 为一个JSON数组格式的题目统计信息，包括每道题的知识点、难度、能力点、结果...等原始数据： [{knowledge:2, ability: 1, difficulty: 3, score: 0/1}]， 其中 score 表示该题是否得分
+    - ~~`type` 表示： 1-测试；2-作业~~
 
     **应答**
 
@@ -1073,6 +1074,8 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
+
 
 
 
