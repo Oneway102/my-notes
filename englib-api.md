@@ -1033,26 +1033,28 @@ Demo API 接口说明
     **说明**
     
     - 学生上报一本书的阅读进度.
-    - `progress` 为 0-100 之间的数字。（可能需要再讨论重复上报的非法进度，目前暂不考虑）
+    - `progress` 为 0-100 之间的数字。如果上报的进度小于当前服务器端进度，则保持后者
+    - 应答会返回用户的当前进度，注意这个值可能大于用户设置的进度值
+    - 当进度为100时，并且该学生没有绑定老师，系统会自动为其布置作业（参考返回应答中的 `exam_assigned` 参数）
     
     **应答**
 
-        { "result": "OK" }
+        { "user": "13022334455", "book_id": "205", "progress": 80, "exam_assigned": false }
 
-- 获取书本统计信息
+- 获取用户书本阅读进度
 
-        POST /api/stat/book
+        POST /api/stat/book/progress
 
         { "user": "13022334455", "book_id": "205" }
 
     **说明**
     
     - 包括阅读进度等信息，返回的统计数据会根据需要逐渐增加.
-    - `progress` 为 0-100 之间的数字。（可能需要再讨论重复上报的非法进度，目前暂不考虑）
+    - `progress` 为 0-100 之间的数字
     
     **应答**
 
-        { user: "13022334455", book_id: 205, book_title: 'xxxxx', progress: 85, ... }
+        { user: "13022334455", book_id: 205, progress: 85 }
 
 ## Download API
 
@@ -1074,8 +1076,6 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
-
-
 
 
 
