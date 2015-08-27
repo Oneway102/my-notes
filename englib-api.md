@@ -1056,6 +1056,37 @@ Demo API 接口说明
 
         { user: "13022334455", book_id: 205, progress: 85 }
 
+- 获取用户某个套餐的书本阅读进度
+
+        POST /api/stat/bookset/progress
+
+        { "user": "13022334455", "bookset_id": "5" }
+
+    **说明**
+    
+    - 包括阅读进度等信息，返回的统计数据会根据需要逐渐增加.
+    - `progress` 为 0-100 之间的数字
+    - 返回结果中不列出未上报过进度或进度为0的书本
+    
+    **应答**
+
+        {
+          "user": "13924758473",
+          "bookset_id": 5,
+          "progress": [
+            {
+              "id": 425,
+              "progress": 100,
+              "modified_time": 1440602519445
+            },
+            {
+              "id": 426,
+              "progress": 80,
+              "modified_time": 1440602519445
+            }
+          ]
+        }
+
 ## Download API
 
 - 下载
