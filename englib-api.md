@@ -148,11 +148,28 @@ Demo API 接口说明
 
         POST /api/user/phone/update
       
-        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "phone": "13023456789" }
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "phone": "13023456789", "sms_code": "a9Hs", "code_id": 45 }
 
     **说明**
     
     - 修改 电话号码
+    - 用户将来收到手机短信验证码，验证通过才表示修改成功
+
+    **应答**
+
+        {
+            result: "OK"
+        }
+
+- 修改密码
+
+        POST /api/user/password/update
+      
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "password": "jfh958", "sms_code": "a9Hs", "code_id": 45 }
+
+    **说明**
+    
+    - 修改 用户密码
     - 用户将来收到手机短信验证码，验证通过才表示修改成功
 
     **应答**
