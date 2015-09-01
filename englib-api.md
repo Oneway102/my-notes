@@ -373,7 +373,7 @@ Demo API 接口说明
 
     **应答**
 
-        { result: "OK" }
+        { director: { id: 293, name: "tjsd00102", display_name: "Huang" } }
 
 - 获取老师列表
 
@@ -1103,6 +1103,21 @@ Demo API 接口说明
             }
           ]
         }
+
+- 上报用户读书行为
+
+        POST /api/stat/book/reading/report
+
+        { "user": "13022334455", "book_id": "205", "from_time": "14412341234", "to_time": "14412341289", "start_page": "3", "to_page": "3", "total_page": "13" }
+
+    **说明**
+    
+    - 学生上报一本书阅读行为，每次关闭书本时上报.
+    - `from_time` - 开始阅读时间，为单位为秒的 Linux 时间戳
+
+    **应答**
+
+        { "result": "OK" }
 
 ## Download API
 
