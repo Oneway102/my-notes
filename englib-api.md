@@ -764,7 +764,7 @@ Demo API 接口说明
 
         POST /api/exam/score/submit
       
-        { "user": "tj859583", "book_id": 518, "exam_id": "2", "question_stat": "....." }
+        { "user": "tj859583", "book_id": 518, "exam_id": "2", "score": 80, "question_stat": "....." }
 
     **说明**
     
@@ -1139,5 +1139,6 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
 
 
