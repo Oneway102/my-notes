@@ -87,8 +87,8 @@ Demo API 接口说明
 
     **说明**
     
-    - 获取 `display_name`
-    - 将来可能会包含用户其它属性：老师、班级属性
+    - 获取 `display_name` 等信息
+    - 同时包含用户其它属性：老师、班级属性
     - 不同类型用户返回的附加信息结构不同
     
     **应答**
@@ -98,7 +98,9 @@ Demo API 接口说明
             name: "13912257904",
             display_name: "xiaoming",
             type: 10,
-            phone: 13938373737,
+            phone: "13938373737",
+            is_vip: true,
+            vip_time: 1441351850,
             teacher: {
                 id: 12,
                 name: "js962981",
@@ -129,19 +131,19 @@ Demo API 接口说明
 
         POST /api/user/update
       
-        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "display_name": "Wang Ming", 'gender": "1" }
+        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "display_name": "Wang Ming", 'gender": "1", "age": "12" }
 
     **说明**
     
-    - 修改 `display_name` 等除了电话号码/电子邮件之外的信息
+    - 修改 `display_name`，`age`，`gender` 等除了电话号码/电子邮件之外的信息
     - `gender` 性别， 1-男，2-女
-    - `display_name` `gender` 等参数至少有一个即可，多值可选
+    - `display_name` `gender` `age` 等参数至少有一个即可，多值可选
     - 会返回所有可见的基本用户信息
     
     **应答**
 
         {
-            "user": "test", "display_name": "Wang Xiaoming"
+            "user": "test", "display_name": "Wang Xiaoming", ...
         }
 
 - 绑定手机
@@ -756,6 +758,44 @@ Demo API 接口说明
               "score": null,
               "created_time": 1439389412989,
               "modified_time": 1439389412989
+            }
+          ]
+        }
+
+- 学生获取套餐作业列表
+
+        POST /api/exam/student/bookset/list
+
+        { "user": "13924758473", "bookset_id":5 }
+
+    **说明**
+    
+    - 获取一个学生的套餐内作业列表
+    - 如有需要可返回对应书本ID和title
+    
+    **说明**
+
+        {
+          "user": "13924758473",
+          "bookset_id": 5,
+          "exams": [
+            {
+              "exam_id": 929,
+              "book_id": 423,
+              "score": "A",
+              "created_time": 1439389412989
+            },
+            {
+              "exam_id": 930,
+              "book_id": 425,
+              "score": "0",
+              "created_time": 1439389428070
+            },
+            {
+              "exam_id": 425,
+              "book_id": 425,
+              "score": null,
+              "created_time": 1440603671385
             }
           ]
         }
