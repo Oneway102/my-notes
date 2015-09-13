@@ -159,7 +159,7 @@ Demo API 接口说明
 
     **应答**
 
-        {  "result": "OK" }
+        {  "ETag": "xxxxxxxxx", "last-modified": 14539393939 }
 
 - 获取用户头像
 
