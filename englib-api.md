@@ -146,6 +146,36 @@ Demo API 接口说明
             "user": "test", "display_name": "Wang Xiaoming", ...
         }
 
+- 更新用户头像
+
+        POST /api/user/avatar/update
+      
+        { "user": "test", "size": "128x128", "avatar": ... }
+
+    **说明**
+    
+    - 修改用户头像
+    - 客户端以 `multipart/form-data` 的格式上传头像相关文件和参数
+
+    **应答**
+
+        {  "result": "OK" }
+
+- 获取用户头像
+
+        POST /api/user/avatar
+      
+        { "user": "test", "if-modified-since": 1439287374 }
+
+    **说明**
+    
+    - 获取用户头像
+    - 需要设置最后获取的时间，以防止服务器重传
+
+    **应答**
+
+        { ... }
+
 - 绑定手机
 
         POST /api/user/phone/update
