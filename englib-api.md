@@ -159,18 +159,18 @@ Demo API 接口说明
 
     **应答**
 
-        {  "ETag": "xxxxxxxxx", "last-modified": 14539393939 }
+        {  "etag": "50b1c1d4f775c61:df3", "last_modified": 14539393939 }
 
 - 获取用户头像
 
         POST /api/user/avatar
       
-        { "user": "test", "if-modified-since": 1439287374 }
+        { "user": "test", "if_modified_since": 1439287374, "etag": xxxxxx }
 
     **说明**
     
     - 获取用户头像
-    - 需要设置最后获取的时间，以防止服务器重传
+    - 需要设置最后获取的时间和ETag（暂时不需要作为HTTP Header参数），以防止服务器重传
 
     **应答**
 
