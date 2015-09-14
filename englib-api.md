@@ -197,7 +197,7 @@ Demo API 接口说明
 
         POST /api/user/password/update
       
-        { "user": "test", "password": "jfh958", "sms_code": "a9Hs", "code_id": 45 }
+        { "user": "test", "password": "jfh958", "phone": "13593847564", "sms_code": "a9Hs", "code_id": 45 }
 
     **说明**
     
@@ -206,9 +206,7 @@ Demo API 接口说明
 
     **应答**
 
-        {
-            result: "OK"
-        }
+        { result: "OK" }
 
 - 验证邀请码
 
