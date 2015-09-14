@@ -64,7 +64,7 @@ Demo API 接口说明
 
         POST /api/auth/smscode
       
-        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "phone": "13828473948", "service_type": 1 }
+        { "user": "test", "phone": "13828473948", "service_type": 1 }
 
     **说明**
     
@@ -197,7 +197,7 @@ Demo API 接口说明
 
         POST /api/user/password/update
       
-        { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "password": "jfh958", "sms_code": "a9Hs", "code_id": 45 }
+        { "user": "test", "password": "jfh958", "sms_code": "a9Hs", "code_id": 45 }
 
     **说明**
     
