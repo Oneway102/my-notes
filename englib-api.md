@@ -170,7 +170,7 @@ Demo API 接口说明
     **说明**
     
     - 获取用户头像
-    - 需要设置最后获取的时间和ETag（暂时不需要作为HTTP Header参数），以防止服务器重传
+    - 客户端需要在接收到内容时分别保存`etag`和`last_modified`，在获取时再分别设置最后获取的时间和ETag（暂时不需要作为HTTP Header参数），以防止服务器重传。（后期转成HTTP Header参数之后，或许可以由Volley来完成缓存功能）
 
     **应答**
 
@@ -1246,6 +1246,7 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
 
 
 
