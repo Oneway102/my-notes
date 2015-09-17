@@ -68,7 +68,7 @@ Demo API 接口说明
 
     **说明**
     
-    - `service_type` 表示验证码用途。 1 - 注册；2 - 修改密码；3 - 忘记密码；4 - 绑定手机
+    - `service_type` 表示验证码用途。 1 - 注册；2 - 修改密码；~~3 - 忘记密码~~；4 - 绑定手机
     - 注册或者忘记密码时无需提供 `user` 和 `token` 参数，其它已确定用户名的情况则需要提供该参数
     - 客户端应提供保护机制，避免用户短时间内重复获取短信验证码
     - 返回的结果包含 `code_id` , 在校验短信验证码（例如提交注册信息）时，需要同时提供该参数
@@ -197,7 +197,7 @@ Demo API 接口说明
 
         POST /api/user/password/update
       
-        { "user": "test", "password": "jfh958", "phone": "13593847564", "sms_code": "a9Hs", "code_id": 45 }
+        { "password": "jfh958", "phone": "13593847564", "sms_code": "a9Hs", "code_id": 45 }
 
     **说明**
     
@@ -838,7 +838,7 @@ Demo API 接口说明
     
     - 学生用户提交测试/作业的成绩
     - `from_time` - 开始测试时间，为单位为秒的 Linux 时间戳
-    - `question_stat` 为一个JSON数组格式的题目统计信息，包括每道题的知识点、难度、能力点、结果...等原始数据： [{knowledge:2, ability: 1, difficulty: 3, score: 0/1}]， 其中 score 表示该题是否得分
+    - `question_stat` 为一个JSON数组格式的题目统计信息，包括每道题的知识点、难度、能力点、结果...等原始数据： [{type:1, knowledge:2, ability: 1, difficulty: 3, score: 0/1}]， 其中 score 表示该题是否得分
     - ~~`type` 表示： 1-测试；2-作业~~
 
     **应答**
