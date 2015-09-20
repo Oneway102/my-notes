@@ -90,6 +90,7 @@ Demo API 接口说明
     - 获取 `display_name` 等信息
     - 同时包含用户其它属性：老师、班级属性
     - 不同类型用户返回的附加信息结构不同
+    - `account_status` : 1-普通用户；2-VIP用户；3-VIP过期用户
     
     **应答**
 
@@ -99,7 +100,7 @@ Demo API 接口说明
             display_name: "xiaoming",
             type: 10,
             phone: "13938373737",
-            is_vip: true,
+            account_status: 2,
             vip_time: 1441351850,
             teacher: {
                 id: 12,
@@ -203,6 +204,21 @@ Demo API 接口说明
     
     - 修改 用户密码
     - 用户将来收到手机短信验证码，验证通过才表示修改成功
+
+    **应答**
+
+        { result: "OK" }
+
+- 用户通过VIP码付费
+
+        POST /api/order/vip/create
+      
+        { "user": "13501103333", "vip_code": "abc1284372", "product": "kwb0001" }
+
+    **说明**
+    
+    - 用户以VIP码的形式付费使用
+    - `product` 目前暂为固定值
 
     **应答**
 
@@ -1246,7 +1262,5 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
-
-
 
 
