@@ -35,12 +35,14 @@ Demo API 接口说明
     
     - 需要保存应答中的 `token` ，作为后续API调用的凭证。
     - 当某个API请求遇到 HTTP 401 错误时，说明 `token` 过期，需要重新登录，申请新的 `token`
+    - `account_status` : 1-普通用户；2-VIP用户；3-VIP过期用户
 
     **应答**
 
         {
-            user: "test"
-            token: "0b4b55e0-0613-11e5-a69d-746573743100"
+            user: "test",
+            token: "0b4b55e0-0613-11e5-a69d-746573743100",
+            account_status: 2
         }
 
 - 退出登录
@@ -305,6 +307,21 @@ Demo API 接口说明
             "sub_status": false
           }
         ]
+
+- 获取用户的某一个套餐
+
+        POST /api/bookset/one
+      
+        { "user": "test", "bookset_id" :"1" }
+
+    **说明**
+    
+    - 获取用户某一个等级的套餐
+    - 应答中具体参数可参考获取所有套餐的接口
+    
+    **应答**
+    
+        { 略 }
 
 - 创建套餐
 
@@ -1262,5 +1279,4 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
-
 
