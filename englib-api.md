@@ -438,6 +438,21 @@ Demo API 接口说明
 
         { director: { id: 293, name: "tjsd00102", display_name: "Huang" } }
 
+- 教研员解除一位老师的绑定
+
+        POST /api/director/s/associate
+      
+        { "user": "tjs859583", "teacher": "tjs59583" }
+
+    **说明**
+    
+    - 只有教研员有权限调用该接口
+    -  `teacher_id` 为老师注册ID，非后台数据库ID
+
+    **应答**
+
+        { result: "OK" }
+
 - 获取老师列表
 
         POST /api/teacher/list
