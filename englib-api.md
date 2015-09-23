@@ -153,27 +153,28 @@ Demo API 接口说明
 
         POST /api/user/avatar/update
       
-        { "user": "test", "size": "128x128", "avatar": ... }
+        { "user": "13511223344", "avatar": ... }
 
     **说明**
     
     - 修改用户头像
-    - 客户端以 `multipart/form-data` 的格式上传头像相关文件和参数
+    - 客户端以 `multipart/form-data` 的格式上传头像文件，头像文件以 '用户名.png/jpg' 形式上传，例如 13511223344.png
 
     **应答**
 
-        {  "etag": "50b1c1d4f775c61:df3", "last_modified": 14539393939 }
+        {  result: "OK" }
 
 - 获取用户头像
 
-        POST /api/user/avatar
+        GET /api/user/avatar?f=13511223344.png
       
-        { "user": "test", "if_modified_since": 1439287374, "etag": xxxxxx }
+        { ... }
 
     **说明**
     
     - 获取用户头像
-    - 客户端需要在接收到内容时分别保存`etag`和`last_modified`，在获取时再分别设置最后获取的时间和ETag（暂时不需要作为HTTP Header参数），以防止服务器重传。（后期转成HTTP Header参数之后，或许可以由Volley来完成缓存功能）
+    - 参数：以用户登录ID为文件名
+    - ~~客户端需要在接收到内容时分别保存`etag`和`last_modified`，在获取时再分别设置最后获取的时间和ETag（暂时不需要作为HTTP Header参数），以防止服务器重传。（后期转成HTTP Header参数之后，或许可以由Volley来完成缓存功能）~~
 
     **应答**
 
