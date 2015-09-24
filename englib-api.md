@@ -227,6 +227,48 @@ Demo API 接口说明
 
         { result: "OK" }
 
+- 用户获取订单记录
+
+        POST /api/order/list
+      
+        { "user": "13501103333", "from_time": "14456789766", "count": "20" }
+
+    **说明**
+    
+    - 用户获取订单，`from_time`为0时则获取所有订单
+    - `type` : 1-支付宝；2-微信支付；3-VIP码支付
+    - `quantity`：购买数量，`price`：单价，`total_fee`：总价；`status`：0-未支付；1-已支付
+
+    **应答**
+
+        {
+          "user_id": 58,
+          "payments": [
+            {
+              "id": 11,
+              "total_fee": "10.00",
+              "price": "10.00",
+              "type": 1,
+              "status": 1,
+              "created_time": 1441353852,
+              "quantity": 1,
+              "subject": "订阅1个月",
+              "body": "每月 10.00 元"
+            },
+            {
+              "id": 12,
+              "total_fee": "10.00",
+              "price": "10.00",
+              "type": 1,
+              "status": 1,
+              "created_time": 1441353991,
+              "quantity": 1,
+              "subject": "订阅1个月",
+              "body": "每月 10.00 元"
+            }
+          ]
+        }
+
 - 验证邀请码
 
         POST /api/icode/verify
@@ -1295,4 +1337,5 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
 
