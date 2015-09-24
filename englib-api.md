@@ -1264,7 +1264,7 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/report
 
-        { "user": "13022334455", "book_id": "205", "from_time": "14412341234", "to_time": "14412341289", "start_page": "3", "to_page": "3", "total_page": "13" }
+        { "user": "13022334455", "book_id": "205", "from_time": "14412341234", "to_time": "14412341289", "from_page": "3", "to_page": "3", "total_page": "13" }
 
     **说明**
     
