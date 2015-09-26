@@ -924,7 +924,7 @@ Demo API 接口说明
 
         POST /api/exam/score/submit
       
-        { "user": "tj859583", "book_id": 518, "exam_id": "2", "score": 80, "from_time": "14412341234", "to_time": "14412341289",  "question_stat": "....." }
+        { "user": "tj859583", "book_id": 518, "book_id": "7", "exam_id": "2", "score": 80, "from_time": "14412341234", "to_time": "14412341289",  "question_stat": "....." }
 
     **说明**
     
@@ -1174,72 +1174,6 @@ Demo API 接口说明
           ]
         }
 
-## Content API
-
-- 获取书本列表
-
-        POST /api/book
-      
-        { "ids": "203,204,205" }
-
-    **说明**
-    
-    - 获取1到n本书的详细信息
-    - 只能获取免费或者本人订阅的套餐中已被推送的书本信息
-    
-    **应答**
-
-        [
-          {
-            "ID": 203,
-            "BOOK_TITLE": "Who Can Help?",
-            "BOOK_TITLE_CN": "谁能帮助我",
-            "FILE_ID": "GK_U8_DRSB3",
-            "GRADE": "0",
-            "BOOK_LEVEL": "S"
-            ...
-          },
-          {
-            "ID": 204,
-            "BOOK_TITLE": "Zip Zippers! Snap Snaps!",
-            "BOOK_TITLE_CN": "拉拉链！按扣子！",
-            "FILE_ID": "GK_U8_DRSB4",
-            "GRADE": "0",
-            "BOOK_LEVEL": "S",
-            ...
-          },
-          {
-            "ID": 205,
-            "BOOK_TITLE": "Doing Our Part",
-            "BOOK_TITLE_CN": "各做各事",
-            "FILE_ID": "GK_U8_DRSB5",
-            "GRADE": "0",
-            "BOOK_LEVEL": "S",
-            ...
-          }
-        ]
-
-- 下载书本
-
-        POST /api/book/download
-
-        { "book_id": "205", "file_id": "GK_U8_DRSB5" }
-
-    **说明**
-    
-    - 本接口不直接返回下载内容，而是以重定向的方式返回下载URL.
-    - 需要同时提供 `book_id` 和 `file_id`
-    
-    **应答**
-
-        HTTP/1.1 302 Moved Temporarily
-        Connection: keep-alive
-        Content-Length: 0
-        Date: Fri, 05 Jun 2015 16:45:27 GMT
-        Location: http://example.com/path/file_name.zip?abc=R0tfVTJfRFJJQjQ0MTQzMzUyNjMyNzgMyN5VTJfRF
-        Set-Cookie: connect.sid=xxx; Path=/; HttpOnly
-        Vary: Accept
-
 - 上报书本阅读进度
 
         POST /api/stat/book/progress/update
@@ -1307,7 +1241,7 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/report
 
-        { "user": "13022334455", "book_id": "205", "from_time": "14412341234", "to_time": "14412341289", "from_page": "3", "to_page": "3", "total_page": "13" }
+        { "user": "13022334455", "book_id": "205", "book_id": "2", "from_time": "14412341234", "to_time": "14412341289", "from_page": "3", "to_page": "3", "total_page": "13" }
 
     **说明**
     
@@ -1401,6 +1335,73 @@ Demo API 接口说明
             { book_title: "xxx", book_title_cn: "xxx", id: "2", count: 89 },
           ]
         }
+
+## Content API
+
+- 获取书本列表
+
+        POST /api/book
+      
+        { "ids": "203,204,205" }
+
+    **说明**
+    
+    - 获取1到n本书的详细信息
+    - 只能获取免费或者本人订阅的套餐中已被推送的书本信息
+    
+    **应答**
+
+        [
+          {
+            "ID": 203,
+            "BOOK_TITLE": "Who Can Help?",
+            "BOOK_TITLE_CN": "谁能帮助我",
+            "FILE_ID": "GK_U8_DRSB3",
+            "GRADE": "0",
+            "BOOK_LEVEL": "S"
+            ...
+          },
+          {
+            "ID": 204,
+            "BOOK_TITLE": "Zip Zippers! Snap Snaps!",
+            "BOOK_TITLE_CN": "拉拉链！按扣子！",
+            "FILE_ID": "GK_U8_DRSB4",
+            "GRADE": "0",
+            "BOOK_LEVEL": "S",
+            ...
+          },
+          {
+            "ID": 205,
+            "BOOK_TITLE": "Doing Our Part",
+            "BOOK_TITLE_CN": "各做各事",
+            "FILE_ID": "GK_U8_DRSB5",
+            "GRADE": "0",
+            "BOOK_LEVEL": "S",
+            ...
+          }
+        ]
+
+- 下载书本
+
+        POST /api/book/download
+
+        { "book_id": "205", "file_id": "GK_U8_DRSB5" }
+
+    **说明**
+    
+    - 本接口不直接返回下载内容，而是以重定向的方式返回下载URL.
+    - 需要同时提供 `book_id` 和 `file_id`
+    
+    **应答**
+
+        HTTP/1.1 302 Moved Temporarily
+        Connection: keep-alive
+        Content-Length: 0
+        Date: Fri, 05 Jun 2015 16:45:27 GMT
+        Location: http://example.com/path/file_name.zip?abc=R0tfVTJfRFJJQjQ0MTQzMzUyNjMyNzgMyN5VTJfRF
+        Set-Cookie: connect.sid=xxx; Path=/; HttpOnly
+        Vary: Accept
+
 
 
 ## Download API
