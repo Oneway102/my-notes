@@ -174,6 +174,7 @@ Demo API 接口说明
     
     - 获取用户头像
     - 参数：以用户登录ID为文件名
+    - token应通过cookie传递
     - ~~客户端需要在接收到内容时分别保存`etag`和`last_modified`，在获取时再分别设置最后获取的时间和ETag（暂时不需要作为HTTP Header参数），以防止服务器重传。（后期转成HTTP Header参数之后，或许可以由Volley来完成缓存功能）~~
 
     **应答**
@@ -1316,6 +1317,91 @@ Demo API 接口说明
     **应答**
 
         { "result": "OK" }
+
+- 阅读人数统计
+
+        POST /api/stat/book/reading/student
+
+        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+
+    **说明**
+    
+    - 统计一个老师的学生总数和参数阅读的学生数
+    - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
+    - `teacher_id` 可换为 `director_id`
+
+    **应答**
+
+        {
+          "from_time": 14412341234,
+          "to_time": 14412341289,
+          "student_total": 5,
+          "student_read": 2
+        }
+
+- 阅读次数统计
+
+        POST /api/stat/book/reading
+
+        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+
+    **说明**
+    
+    - 统计一个老师的学生阅读次数
+    - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
+    - `teacher_id` 可换为 `director_id`
+
+    **应答**
+
+        {
+          "from_time": 14412341234,
+          "to_time": 14412341289,
+          "reading_count": 289
+        }
+
+- 阅读时长统计
+
+        POST /api/stat/book/reading/time
+
+        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+
+    **说明**
+    
+    - 统计一个老师的学生阅读时长（单位为秒）
+    - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
+    - `teacher_id` 可换为 `director_id`
+
+    **应答**
+
+        {
+          "from_time": 14412341234,
+          "to_time": 14412341289,
+          "reading_time": 294589
+        }
+
+- 阅读排行统计
+
+        POST /api/stat/book/reading/rank
+
+        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+
+    **说明**
+    
+    - 统计一个老师的学生阅读书本前10名
+    - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳。暂时不用
+    - `teacher_id` 可换为 `director_id`，参数为空时表示查询全局统计
+
+    **应答**
+
+        {
+          "from_time": 14412341234,
+          "to_time": 14412341289,
+          "books": [
+            { book_title: "xxx", book_title_cn: "xxx", id: "1", count: 122 },
+            { book_title: "xxx", book_title_cn: "xxx", id: "2", count: 89 },
+          ]
+        }
+
 
 ## Download API
 
