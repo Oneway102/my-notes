@@ -1336,6 +1336,98 @@ Demo API 接口说明
           ]
         }
 
+- 作业知识点统计
+
+        POST /api/stat/book/exam/knowledge
+
+        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+
+    **说明**
+    
+    - 统计一个老师的学生作业的各个知识点正确率
+    - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
+    - `teacher_id` 可换为 `director_id`
+    - 返回结果中，`total`表示总题数，`correct`表示正确答对的题数
+
+    **应答**
+
+        {
+          "from_time": 99,
+          "to_time": 1543166696,
+          "knowledge_stat": [
+            {
+              "knowledge": "1",
+              "total": 93,
+              "correct": 76,
+              "tag": "名称"
+            },
+            {
+              "knowledge": "11",
+              "total": 4,
+              "correct": 2,
+              "tag": "惯用短语和句型"
+            },
+            {
+              "knowledge": "23",
+              "total": 13,
+              "correct": 10,
+              "tag": "主旨大意"
+            },
+            {
+              "knowledge": "24",
+              "total": 21,
+              "correct": 16,
+              "tag": "推理判断"
+            }
+          ]
+        }
+
+- 作业题目认知能力统计
+
+        POST /api/stat/book/exam/ability
+
+        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+
+    **说明**
+    
+    - 统计一个老师的学生作业的各个知识点正确率
+    - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
+    - `teacher_id` 可换为 `director_id`
+    - 返回结果中，`total`表示总题数，`correct`表示正确答对的题数
+
+    **应答**
+
+        {
+          "from_time": 99,
+          "to_time": 1543166696,
+          "ability_stat": [
+            {
+              "ability": "1",
+              "total": 77,
+              "correct": 64,
+              "tag": "识记"
+            },
+            {
+              "ability": "2",
+              "total": 20,
+              "correct": 14,
+              "tag": "理解"
+            },
+            {
+              "ability": "3",
+              "total": 19,
+              "correct": 14,
+              "tag": "简单运用"
+            },
+            {
+              "ability": "4",
+              "total": 15,
+              "correct": 12,
+              "tag": "综合应用"
+            }
+          ]
+        }
+
 ## Content API
 
 - 获取书本列表
