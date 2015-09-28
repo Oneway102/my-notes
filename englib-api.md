@@ -112,6 +112,7 @@ Demo API 接口说明
             class: {
                 id: 1,
                 name: "className"
+                bookset_id: "3",
             }
         }
         或
