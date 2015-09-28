@@ -924,7 +924,7 @@ Demo API 接口说明
 
         POST /api/exam/score/submit
       
-        { "user": "tj859583", "book_id": 518, "book_id": "7", "exam_id": "2", "score": 80, "from_time": "14412341234", "to_time": "14412341289",  "question_stat": "....." }
+        { "user": "tj859583", "book_id": 518, "exam_id": "2", "score": 80, "from_time": "14412341234", "to_time": "14412341289",  "question_stat": "....." }
 
     **说明**
     
@@ -1241,7 +1241,7 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/report
 
-        { "user": "13022334455", "book_id": "205", "book_id": "2", "from_time": "14412341234", "to_time": "14412341289", "from_page": "3", "to_page": "3", "total_page": "13" }
+        { "user": "13022334455", "book_id": "205", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289", "from_page": "3", "to_page": "3", "total_page": "13" }
 
     **说明**
     
@@ -1256,7 +1256,7 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/student
 
-        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
@@ -1277,7 +1277,7 @@ Demo API 接口说明
 
         POST /api/stat/book/reading
 
-        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
@@ -1297,7 +1297,7 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/time
 
-        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
@@ -1317,7 +1317,7 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/rank
 
-        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
@@ -1340,7 +1340,7 @@ Demo API 接口说明
 
         POST /api/stat/book/exam/knowledge
 
-        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
@@ -1386,7 +1386,7 @@ Demo API 接口说明
 
         POST /api/stat/book/exam/ability
 
-        { "teacher_id": "abc00102", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
