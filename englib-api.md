@@ -1257,13 +1257,13 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/student
 
-        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
     - 统计一个老师的学生总数和参数阅读的学生数
     - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
-    - `teacher_id` 可换为 `director_id`
+    - `teacher_id` 可换为 `director_id`，注意不是 login ID
 
     **应答**
 
@@ -1278,13 +1278,13 @@ Demo API 接口说明
 
         POST /api/stat/book/reading
 
-        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
     - 统计一个老师的学生阅读次数
     - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
-    - `teacher_id` 可换为 `director_id`
+    - `teacher_id` 可换为 `director_id`，注意不是 login ID
 
     **应答**
 
@@ -1298,13 +1298,13 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/time
 
-        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
     - 统计一个老师的学生阅读时长（单位为秒）
     - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
-    - `teacher_id` 可换为 `director_id`
+    - `teacher_id` 可换为 `director_id`，注意不是 login ID
 
     **应答**
 
@@ -1318,13 +1318,13 @@ Demo API 接口说明
 
         POST /api/stat/book/reading/rank
 
-        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
     - 统计一个老师的学生阅读书本前10名
     - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳。暂时不用
-    - `teacher_id` 可换为 `director_id`，参数为空时表示查询全局统计
+    - `teacher_id` 可换为 `director_id`，参数为空时表示查询全局统计(注意不是 login ID)
 
     **应答**
 
@@ -1341,13 +1341,13 @@ Demo API 接口说明
 
         POST /api/stat/book/exam/knowledge
 
-        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
     - 统计一个老师的学生作业的各个知识点正确率
     - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
-    - `teacher_id` 可换为 `director_id`
+    - `teacher_id` 可换为 `director_id`，注意不是 login ID
     - 返回结果中，`total`表示总题数，`correct`表示正确答对的题数
 
     **应答**
@@ -1387,13 +1387,13 @@ Demo API 接口说明
 
         POST /api/stat/book/exam/ability
 
-        { "teacher_id": "abc00102", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
+        { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
     **说明**
     
     - 统计一个老师的学生作业的各个知识点正确率
     - `from_time` - 开始统计时间，为单位为秒的 Linux 时间戳
-    - `teacher_id` 可换为 `director_id`
+    - `teacher_id` 可换为 `director_id`，注意不是 login ID
     - 返回结果中，`total`表示总题数，`correct`表示正确答对的题数
 
     **应答**
@@ -1517,4 +1517,5 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
 
