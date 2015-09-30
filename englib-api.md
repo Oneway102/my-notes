@@ -199,16 +199,31 @@ Demo API 接口说明
             result: "OK"
         }
 
-- 修改密码
+- 忘记密码
 
-        POST /api/user/password/update
+        POST /api/user/password/forget
       
         { "password": "jfh958", "phone": "13593847564", "sms_code": "a9Hs", "code_id": 45 }
 
     **说明**
     
-    - 修改 用户密码
+    - 用户忘记密码之后重新设置密码
     - 用户将来收到手机短信验证码，验证通过才表示修改成功
+
+    **应答**
+
+        { result: "OK" }
+
+- 修改密码
+
+        POST /api/user/password/update
+      
+        { "password": "jfh958", "old_password": "xxxx", "new_password": "cccc" }
+
+    **说明**
+    
+    - 修改用户密码
+    - -
 
     **应答**
 
@@ -1291,7 +1306,8 @@ Demo API 接口说明
         {
           "from_time": 14412341234,
           "to_time": 14412341289,
-          "reading_count": 289
+          "reading_count": 289,
+          "book_count": 30
         }
 
 - 阅读时长统计
@@ -1332,8 +1348,8 @@ Demo API 接口说明
           "from_time": 14412341234,
           "to_time": 14412341289,
           "books": [
-            { book_title: "xxx", book_title_cn: "xxx", id: "1", count: 122 },
-            { book_title: "xxx", book_title_cn: "xxx", id: "2", count: 89 },
+            { book_title: "xxx", book_title_cn: "xxx", file_id: "xxx", id: "1", count: 122 },
+            { book_title: "xxx", book_title_cn: "xxx", file_id: "xxx", id: "2", count: 89 },
           ]
         }
 
