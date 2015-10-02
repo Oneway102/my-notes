@@ -1021,6 +1021,23 @@ Demo API 接口说明
 
     **应答**
 
+        {
+          "from_time": xxxxx,
+          "to_time": xxxxx,
+          "exams": [
+            {
+              "teacher_id": 32,
+              "total_count": 9,
+              "submitted_count": 1
+            },
+            {
+              "teacher_id": "33",
+              "total_count": 0,
+              "submitted_count": 0
+            }
+          ]
+        }
+
 - 根据套餐获取成绩列表
 
         POST /api/exam/score/user/list
@@ -1548,4 +1565,5 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
 
