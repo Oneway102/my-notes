@@ -218,7 +218,7 @@ Demo API 接口说明
 
         POST /api/user/password/update
       
-        { "password": "jfh958", "old_password": "xxxx", "new_password": "cccc" }
+        { "user": "13529384756", "old_password": "xxxx", "new_password": "cccc" }
 
     **说明**
     
@@ -1006,6 +1006,21 @@ Demo API 接口说明
             },
           ]
         }
+
+- 教研员获取相关老师的作业统计信息
+
+        POST /api/exam/director/list
+      
+        { "user": "sjk000103", "from_time": 1431234567, "to_time": 1431244567 }
+
+    **说明**
+    
+    - 获取一位教研员相关的老师布置的作业统计信息，主要包括布置作业数目和提交作业的数目
+    -  `from_time` 、`to_time`为统计的开始和结束时间，单位为秒，客户端应以周为单位来进行统计和展示
+    - 仅教研员有权限调用该接口
+
+    **应答**
+
 - 根据套餐获取成绩列表
 
         POST /api/exam/score/user/list
@@ -1533,5 +1548,4 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
-
 
