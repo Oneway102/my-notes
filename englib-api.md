@@ -1027,11 +1027,15 @@ Demo API 接口说明
           "exams": [
             {
               "teacher_id": 32,
+              "name": "xxxx",
+              "display_name: "xxxxx",
               "total_count": 9,
               "submitted_count": 1
             },
             {
               "teacher_id": "33",
+              "name": "xxxx",
+              "display_name: "",
               "total_count": 0,
               "submitted_count": 0
             }
