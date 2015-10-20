@@ -1306,7 +1306,7 @@ Demo API 接口说明
 
 - 阅读人数统计
 
-        POST /api/stat/book/reading/student
+        POST /api/stat/reading/student
 
         { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
@@ -1327,7 +1327,7 @@ Demo API 接口说明
 
 - 阅读次数统计
 
-        POST /api/stat/book/reading
+        POST /api/stat/reading
 
         { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
@@ -1348,7 +1348,7 @@ Demo API 接口说明
 
 - 阅读时长统计
 
-        POST /api/stat/book/reading/time
+        POST /api/stat/reading/time
 
         { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
@@ -1368,7 +1368,7 @@ Demo API 接口说明
 
 - 阅读排行统计
 
-        POST /api/stat/book/reading/rank
+        POST /api/stat/reading/rank
 
         { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
