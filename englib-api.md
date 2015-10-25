@@ -1491,13 +1491,14 @@ Demo API 接口说明
     - 本接口用来查询客户端最新版本
     - `client`：android 或者 ios
     - `branch`: stable 表示发布版本，dev 表示开发版本
-    - 如果最新版本与客户端当前版本一致或暂无更新，应答中可能不会携带 `version_name` 和 `url`
+    - 如果最新版本与客户端当前版本一致或暂无更新，应答中可能不会携带 `version_name` 和 `url` 和 `branch`
     
     **应答**
 
         {
+            branch: "stable",
             latest_version: 18,
-            version_name: “”0.13.1,
+            version_name: “0.13.1",
             url: “xxx"
         }
 
