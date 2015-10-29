@@ -64,7 +64,7 @@ Demo API 接口说明
 
 - 获取短信验证码
 
-        POST /api/auth/smscode
+        POST /api/auth/smscode/v2
       
         { "user": "test", "token": "0b4b55e0-0613-11e5-a69d-746573743100", "phone": "13828473948", "service_type": 1 }
 
