@@ -1568,7 +1568,21 @@ Demo API 接口说明
         Set-Cookie: connect.sid=xxx; Path=/; HttpOnly
         Vary: Accept
 
+- 下载确认
 
+        POST /api/book/download/notify
+      
+        { "book_id": 5, "bookset_id":1, "file_name": "xxxx", status": 1 }
+
+    **说明**
+    
+    - 下载确认
+    - `status` - 下载状态， 0-失败；1-成功。缺省为1
+    - 注意本接口为 Content API， 需携带正确的 app_key 和 HTTP Header
+    
+    **应答**
+
+        { "result": "OK" }
 
 ## Download API
 
@@ -1590,5 +1604,4 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
-
 
