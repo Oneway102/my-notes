@@ -1572,7 +1572,7 @@ Demo API 接口说明
 
         POST /api/book/download/notify
       
-        { "book_id": 5, "bookset_id":1, "file_name": "xxxx", status": 1 }
+        { "file_id": "xxxx", status": 1 }
 
     **说明**
     
