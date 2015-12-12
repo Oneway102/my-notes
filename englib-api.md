@@ -25,6 +25,21 @@ Demo API 接口说明
             "result": "OK"
         }
 
+- 通过用户昵称注册
+
+        POST /api/auth/register/nickname
+      
+        { "display_name": "test", "password": "xxxx" }
+
+    **说明**
+
+    - 通过用户名的 display_name 来注册，无需手机验证码
+    - 注册成功后会返回 `user` 参数，用户需要通过这个用户名来登录，客户端需要为用户保存该字段
+
+    **应答**
+
+        { user: "100107", display_name: "tome.lee" }
+
 - 登录
 
         POST /api/auth/login
