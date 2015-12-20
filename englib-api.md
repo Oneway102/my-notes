@@ -29,12 +29,13 @@ Demo API 接口说明
 
         POST /api/auth/register/nickname
       
-        { "display_name": "test", "password": "xxxx" }
+        { "display_name": "test", "password": "xxxx",  sms_code: "xxx", code_id: 456 }
 
     **说明**
 
     - 通过用户名的 display_name 来注册，无需手机验证码
     - 注册成功后会返回 `user` 参数，用户需要通过这个用户名来登录，客户端需要为用户保存该字段
+    - `sms_code` 和 `code_id` 通过获取验证码图片接口获得
 
     **应答**
 
@@ -43,11 +44,13 @@ Demo API 接口说明
 - 登录
 
         POST /api/auth/login
+        POST /api/auth/login/v2
       
         { "user": "test", "password": "xxxx" }
 
     **说明**
     
+    - 缺省只允许使用 `用户名` 登录，但 v2 接口允许使用 `用户名` 或 `phone` 登录（目前这种情况仅适用于 iOS 客户端）
     - 需要保存应答中的 `token` ，作为后续API调用的凭证。
     - 当某个API请求遇到 HTTP 401 错误时，说明 `token` 过期，需要重新登录，申请新的 `token`
     - `account_status` : 1-普通用户；2-VIP用户；3-VIP过期用户
@@ -92,9 +95,23 @@ Demo API 接口说明
     
     **应答**
 
-        {
-            "code_id": 213
-        }
+        { "code_id": 213 }
+
+- 获取图片验证码
+
+        POST /api/auth/captcha
+      
+        { app_key: "xxxxx" }
+
+    **说明**
+    
+    - 客户端应提供保护机制，避免用户短时间内重复获取图片验证码
+    - 返回二进制图片
+    - 返回的结果中 HTTP Header 包含 `code_id` , 在校验验证码（例如提交注册信息）时，需要同时提供该参数
+    
+    **应答**
+
+        {   }
 
 - 获取用户信息
 
@@ -1619,4 +1636,5 @@ Demo API 接口说明
         Content-Type: application/x-zip-compressed
 
 - 其它
+
 
