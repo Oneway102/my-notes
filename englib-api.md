@@ -1423,7 +1423,7 @@ Demo API 接口说明
 
 - 作业知识点统计
 
-        POST /api/stat/book/exam/knowledge
+        POST /api/stat/exam/knowledge
 
         { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
@@ -1469,7 +1469,7 @@ Demo API 接口说明
 
 - 作业题目认知能力统计
 
-        POST /api/stat/book/exam/ability
+        POST /api/stat/exam/ability
 
         { "teacher_id": "32", "bookset_id": "2", "from_time": "14412341234", "to_time": "14412341289" }
 
